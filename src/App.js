@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Login from "./components/login.jsx";
+import Register from "./components/Register";
+import ChatComponent from "./components/testChat";
+import Cookies from 'cookies-js';
+import Home from './components/Home.jsx'
+
 
 function App() {
+  console.log(Cookies.get('user'));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+      <Route path="/" exact render={() => (Cookies.get('user') ? <Home /> : <Login />)} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path='/chat' component={ChatComponent} />
+      </Switch>
+    </Router>
   );
 }
 

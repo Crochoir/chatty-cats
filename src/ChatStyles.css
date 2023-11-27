@@ -1,0 +1,162 @@
+/* chat-styles.css */
+
+body , html{
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    align-items: center;
+    
+  }
+  
+  nav {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  nav li {
+    margin-right: 20px;
+  }
+  
+  .login-tab {
+    margin-left: auto; /* Push the login tab to the right */
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  main {
+    background-color: #aad8e6;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  p {
+    color: #666;
+  }
+  
+  .chat-container {
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .chat-history {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to top, #003366, #00cccc);
+    min-height: 450px;
+  }
+  
+  .chat-input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .chat-button {
+    background-color: #004080; /* Darker shade of blue */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 50%; /* Rounded shape for a circle */
+    padding: 10px; /* Adjust padding as needed */
+    cursor: pointer;
+  }
+  
+  .chat-button:hover {
+    background-color: #00254d; /* Darker shade for hover effect */
+  }
+
+  .right-message {
+    text-align: right !important;
+    color: #f8f8f8; /* Color for the logged-in user's messages */
+    background-color: #004080;
+    border-radius: 25px;
+    padding:2% 3.5% 2% 3.5%;
+    display: inline-block;
+  }
+  
+  .left-message {
+    text-align: left;
+    color: #f8f8f8; /* Color for other users' messages */
+    background-color: #008000;
+    border-radius: 25px;
+    padding:1.5% 3% 1.5% 3%;
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px; /* Increase the padding for a thicker bar */
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow for a subtle separation */
+    }
+  
+    li {
+      margin-right: 0; /* Remove the right margin for mobile */
+    }
+
+    main {
+        background-color: #aad8e6;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50%;
+        padding: 20px;
+        width: 300px;
+        max-width: 800px;
+        margin: 11% auto;
+      }
+
+    .chat-container {
+
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        min-height: 300px;
+        overflow-y: auto;
+        margin-top: 10% auto;
+    }
+
+  }
+  
