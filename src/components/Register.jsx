@@ -20,7 +20,7 @@ const Register = () => {
       });
 
       if (response.ok) {
-        console.log('Registration Successful!');
+        //console.log('Registration Successful!');
         history.push('/')
       } else {
         console.error('Login failed');

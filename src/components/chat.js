@@ -15,7 +15,7 @@ const ChatComponent = () => {
     setSocket(socketInstance);
 
     socketInstance.on('userList', (users) => {
-      console.log('User list updated:', users);
+      //console.log('User list updated:', users);
     });
 
     socketInstance.on('initMessages', (data) => {

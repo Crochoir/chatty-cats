@@ -8,7 +8,7 @@ import Home from './components/Home.jsx'
 
 
 function App() {
-  console.log(Cookies.get('user'));
+  //console.log(Cookies.get('user'));
   return (
     <Router>
       <Switch>

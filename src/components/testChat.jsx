@@ -89,7 +89,7 @@ const ChatComponent = () => {
     if (socket) {
       socket.emit('message', { user: message.user, recipient: message.recipient, content: message.content });
       setMessage({ user: message.user, recipient: message.recipient, content: '' });
-      console.log(message)
+      //console.log(message)
     }
   };
 

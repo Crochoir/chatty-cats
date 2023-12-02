@@ -22,11 +22,11 @@ const Login = () => {
       });
 
       if (response.ok) {
-        console.log('Login successful!');
+        //console.log('Login successful!');
         Cookies.set('user', username)
         Cookies.set('pass', password)
         history.push('/')
-        console.log(Cookies.get('user'));
+        //console.log(Cookies.get('user'));
       } else {
         setError(true)
       }
