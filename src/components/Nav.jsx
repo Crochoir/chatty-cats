@@ -9,7 +9,6 @@ const Nav = () => {
     if (confirmLogout) {
       Cookies.expire('user');
       Cookies.expire('pass');
-      // Redirect to the login page or perform any other necessary actions
       window.location.href = '/';
     }
   };

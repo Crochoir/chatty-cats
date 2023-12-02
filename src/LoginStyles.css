@@ -7,6 +7,17 @@ body {
     background: linear-gradient(to bottom right, #003366, #00cccc);
     background-size: cover;
   }
+
+.full-div {
+  font-family: 'Arial', sans-serif;
+    margin: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #003366, #00cccc);
+    background-size: cover;
+}
   
   
   .card {

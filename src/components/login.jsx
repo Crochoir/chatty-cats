@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Cookies from "cookies-js";
 import { useHistory } from 'react-router-dom';
 import '../LoginStyles.css'
@@ -12,9 +12,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Perform authentication logic here, such as sending a request to your backend API
-    // You can use libraries like axios to make HTTP requests
-
     try {
       const response = await fetch('http://192.168.1.8:3001/api/auth', {
         method: 'POST',
@@ -25,14 +22,12 @@ const Login = () => {
       });
 
       if (response.ok) {
-        // Authentication successful, handle the next steps (e.g., redirect the user)
         console.log('Login successful!');
         Cookies.set('user', username)
         Cookies.set('pass', password)
         history.push('/')
         console.log(Cookies.get('user'));
       } else {
-        // Authentication failed, handle the error
         setError(true)
       }
     } catch (error) {
@@ -41,9 +36,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className={'full-div'}>
+      <form className={'card'} onSubmit={handleSubmit}>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
         <label>
           Username:
           <input

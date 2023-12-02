@@ -11,13 +11,10 @@ const ChatComponent = () => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    // Connect to the Socket.io server
     const socketInstance = io('http://192.168.1.8:3001');
     setSocket(socketInstance);
 
-    // Listen for events from the server
     socketInstance.on('userList', (users) => {
-      // Handle the updated list of users if needed
       console.log('User list updated:', users);
     });
 
@@ -29,10 +26,8 @@ const ChatComponent = () => {
       setChatHistory((prevHistory) => [...prevHistory, data]);
     });
 
-    // Emit the 'init' event to initialize the user
     socketInstance.emit('init', Cookies.get('user'));
 
-    // Clean up the socket connection on component unmount
     return () => {
       socketInstance.disconnect();
     };
