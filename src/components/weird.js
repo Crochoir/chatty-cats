@@ -1,7 +1,7 @@
 import react from 'react';
 
 const Ip = () => {
-    return '71.66.253.91'
+    return 'oops'
 }
 
 export default Ip;
