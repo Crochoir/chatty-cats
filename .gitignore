@@ -10,7 +10,7 @@
 
 # production
 /build
-/source/components/weird.js
+/src/components/weird.js
 
 
 # misc
