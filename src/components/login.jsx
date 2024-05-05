@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Cookies from "cookies-js";
 import { useHistory } from 'react-router-dom';
 import '../LoginStyles.css'
+import Ip from './weird.js'; 
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -9,29 +10,34 @@ const Login = () => {
   const [error, setError] = useState(false);
   const history = useHistory();
 
+  const IP = Ip();
+  //console.log('ip is:' + IP);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://192.168.1.8:3001/api/auth', {
+      let user = username.toLowerCase();
+      const response = await fetch('http://' + IP +':4001/api/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ username: user, password: password }),
       });
 
       if (response.ok) {
-        //console.log('Login successful!');
-        Cookies.set('user', username)
-        Cookies.set('pass', password)
+        console.log('Login successful!');
+        Cookies.set('user', user)
+        Cookies.set('pass', password) 
         history.push('/')
         //console.log(Cookies.get('user'));
       } else {
         setError(true)
+        console.log('fetch failed')
       }
     } catch (error) {
       setError(true);
+      console.log('promise failed')
     }
   };
 

@@ -4,7 +4,6 @@ import Login from "./components/login.jsx";
 import Register from "./components/Register";
 import ChatComponent from "./components/testChat";
 import Cookies from 'cookies-js';
-import Home from './components/Home.jsx'
 
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
   return (
     <Router>
       <Switch>
-      <Route path="/" exact render={() => (Cookies.get('user') ? <Home /> : <Login />)} />
+      <Route path="/" exact render={() => (Cookies.get('user') ? <ChatComponent /> : <Login />)} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path='/chat' component={ChatComponent} />

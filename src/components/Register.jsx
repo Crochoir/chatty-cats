@@ -5,18 +5,33 @@ import '../LoginStyles.css'
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [validPassword, setValidPassword] = useState(true);
+
+  const IP = process.env.REACT_APP_IP;
 
   const history = useHistory();
 
+  const handleChange = (e) => {
+    const newPassword = e.target.value; 
+    setPassword(newPassword)
+
+    const isValid = validatePassword(newPassword)
+    setValidPassword(isValid)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!validPassword) {
+      return;
+    }
     try {
-      const response = await fetch('http://localhost:3001/api/register', {
+      let user = username.toLowerCase()
+      const response = await fetch('http://71.66.253.91:4001/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ username: user, password: password }), 
       });
 
       if (response.ok) {
@@ -28,6 +43,22 @@ const Register = () => {
     } catch (error) {
       console.error('Error during login:', error);
     }
+  };
+
+  const validatePassword = (password) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasDigit = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(password);
+
+    return (
+      password.length >= minLength &&
+      hasUpperCase &&
+      hasLowerCase &&
+      hasDigit &&
+      hasSpecialChar
+    );
   };
 
   return (
@@ -48,8 +79,9 @@ const Register = () => {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
           />
+          {!validPassword && <p>Password must meet crteria</p>}
         </label>
         <br />
         <button type="submit">Register</button>

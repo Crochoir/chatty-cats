@@ -3,7 +3,10 @@ import io from 'socket.io-client';
 import Cookies from 'cookies-js';
 import Nav from './Nav';
 import '../ChatStyles.css';
+import Ip from './weird.js'; 
 
+let IP = Ip();
+//console.log(IP);
 
 const UserList = ({ users, onSelectUser, currentUser }) => (
     <div className="user-list">
@@ -15,7 +18,7 @@ const UserList = ({ users, onSelectUser, currentUser }) => (
             <li key={user._id} onClick={() => onSelectUser(user)}>
               {user.username} <button onClick={() => 
               {
-                onSelectUser(user)
+                onSelectUser(user) 
                 }}>Chat</button>
             </li>
           ))}
@@ -32,7 +35,7 @@ const ChatComponent = () => {
   const chatHistoryRef = useRef(null);
 
   useEffect(() => {
-    const socketInstance = io('http://192.168.1.8:3001');
+    const socketInstance = io('http://' + IP +':4001');
     setSocket(socketInstance);
 
     socketInstance.on('initMessages', (data) => {
@@ -63,7 +66,7 @@ const ChatComponent = () => {
 
   const fetchUserList = async () => {
     try {
-      const response = await fetch('http://192.168.1.8:3001/api/users');
+      const response = await fetch('http://' + IP +':4001/api/users');
       const data = await response.json();
       setUsers(data.users);
     } catch (error) {
@@ -77,7 +80,7 @@ const ChatComponent = () => {
     setMessage({...message, recipient: user.username });
   
     try {
-      const response = await fetch(`http://192.168.1.8:3001/api/messages/${Cookies.get('user')}/${user.username}`);
+      const response = await fetch(`http://${IP}:4001/api/messages/${Cookies.get('user')}/${user.username}`);
       const data = await response.json();
       setChatHistory(data.messages.reverse());
     } catch (error) {
